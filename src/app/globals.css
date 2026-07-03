@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+/* Class-based dark mode driven by next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/*  Brand palette (from RESCA logo + quinoa colours)                    */
+/* ------------------------------------------------------------------ */
+:root {
+  --magenta: #c2168a;
+  --magenta-bright: #e6188d;
+  --lime: #b6df2c;
+  --leaf: #3aa14a;
+  --sky: #21b3d6;
+  --gold: #f2a93b;
+
+  /* Semantic tokens — LIGHT theme */
+  --bg: #fbf6f1;
+  --bg-soft: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #fbf1f7;
+  --text: #26101c;
+  --text-muted: #715864;
+  --border: rgba(194, 22, 138, 0.14);
+  --primary: #c2168a;
+  --primary-contrast: #ffffff;
+  --ring: rgba(194, 22, 138, 0.45);
+  --glow: rgba(230, 24, 141, 0.18);
+  --hero-overlay: linear-gradient(
+    180deg,
+    rgba(251, 246, 241, 0.1) 0%,
+    rgba(251, 246, 241, 0.55) 60%,
+    rgba(251, 246, 241, 0.95) 100%
+  );
+}
+
+.dark {
+  --bg: #140510;
+  --bg-soft: #1c0918;
+  --surface: #230d1d;
+  --surface-2: #2c1226;
+  --text: #fbeef6;
+  --text-muted: #c8a3b9;
+  --border: rgba(255, 255, 255, 0.1);
+  --primary: #ff45b0;
+  --primary-contrast: #22001a;
+  --ring: rgba(255, 69, 176, 0.55);
+  --glow: rgba(255, 69, 176, 0.22);
+  --hero-overlay: linear-gradient(
+    180deg,
+    rgba(20, 5, 16, 0.15) 0%,
+    rgba(20, 5, 16, 0.6) 55%,
+    rgba(20, 5, 16, 0.96) 100%
+  );
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-contrast: var(--primary-contrast);
+
+  --color-magenta: var(--magenta);
+  --color-magenta-bright: var(--magenta-bright);
+  --color-lime: var(--lime);
+  --color-leaf: var(--leaf);
+  --color-sky: var(--sky);
+  --color-gold: var(--gold);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins);
+
+  --radius-4xl: 2rem;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-aurora: aurora 18s ease infinite;
+  --animate-spin-slow: spin 26s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tw-rotate, 0));
+  }
+  50% {
+    transform: translateY(-18px) rotate(var(--tw-rotate, 0));
+  }
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                                */
+/* ------------------------------------------------------------------ */
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.35s ease;
+}
+
+::selection {
+  background: var(--magenta);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--magenta), var(--magenta-bright));
+  border-radius: 999px;
+  border: 2px solid var(--bg-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Utilities                                                           */
+/* ------------------------------------------------------------------ */
+@utility container-x {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+
+.text-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--magenta) 0%,
+    var(--magenta-bright) 45%,
+    var(--gold) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-quinoa {
+  background: linear-gradient(
+    100deg,
+    var(--leaf),
+    var(--lime),
+    var(--gold),
+    var(--magenta-bright)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aurora 8s ease infinite;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+.card-surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 18px 40px -24px var(--glow);
+}
+
+.glow-primary {
+  box-shadow: 0 10px 40px -12px var(--glow), 0 0 0 1px var(--border);
+}
+
+.aurora-bg {
+  background: radial-gradient(
+      40% 55% at 15% 20%,
+      color-mix(in srgb, var(--magenta) 30%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      45% 50% at 85% 15%,
+      color-mix(in srgb, var(--gold) 26%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      50% 60% at 60% 90%,
+      color-mix(in srgb, var(--leaf) 24%, transparent) 0%,
+      transparent 65%
+    );
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.perspective {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 80%
+  );
+  transition: transform 0.7s ease;
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
