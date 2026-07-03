@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
 import { site } from "@/lib/site";
 
 const inter = Inter({
@@ -77,10 +78,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: "/images/logo-mark-320.png",
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
   },
 };
 
@@ -133,13 +138,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-primary-contrast focus:font-semibold"
-          >
-            Skip to content
-          </a>
-          {children}
+          <LanguageProvider>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-primary-contrast focus:font-semibold"
+            >
+              Skip to content
+            </a>
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

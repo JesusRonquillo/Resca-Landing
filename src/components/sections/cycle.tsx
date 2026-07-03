@@ -7,10 +7,12 @@ import { steps } from "@/lib/content";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { Reveal } from "@/components/ui/reveal";
 import { clsx } from "@/lib/clsx";
+import { useI18n } from "@/components/language-provider";
 
 export function Cycle() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const { t } = useI18n();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 60%", "end 70%"],
@@ -24,19 +26,16 @@ export function Cycle() {
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-              The cycle of a RESCA intervention
+              {t.cycle.eyebrow}
             </span>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-tight tracking-tight text-text">
-              One season, five steps, alongside the community
+              {t.cycle.title}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-5 text-lg text-muted">
-              In Puno, the quinoa planting season begins in September or October,
-              depending on the rains. Each campaign follows these steps.
-            </p>
+            <p className="mt-5 text-lg text-muted">{t.cycle.intro}</p>
           </Reveal>
         </div>
 
@@ -52,6 +51,7 @@ export function Cycle() {
           <ol className="space-y-12 md:space-y-24">
             {steps.map((s, i) => {
               const left = i % 2 === 0;
+              const st = t.cycle.steps[i];
               return (
                 <li key={s.n} className="relative">
                   {/* Node */}
@@ -74,7 +74,7 @@ export function Cycle() {
                         <div className="relative aspect-[4/3] overflow-hidden rounded-[1.4rem]">
                           <ResponsiveImage
                             name={s.image}
-                            alt={s.alt}
+                            alt={st.alt}
                             sizes="(max-width: 768px) 90vw, 42vw"
                           />
                           <span
@@ -97,13 +97,13 @@ export function Cycle() {
                         className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide"
                         style={{ color: s.accent, backgroundColor: `color-mix(in srgb, ${s.accent} 14%, transparent)` }}
                       >
-                        <CalendarDays size={13} /> {s.when}
+                        <CalendarDays size={13} /> {st.when}
                       </span>
                       <h3 className="mt-3 font-display text-2xl font-extrabold tracking-tight text-text sm:text-3xl">
-                        {s.title}
+                        {st.title}
                       </h3>
                       <p className="mt-3 text-[1.05rem] leading-relaxed text-muted">
-                        {s.body}
+                        {st.body}
                       </p>
                     </Reveal>
                   </div>

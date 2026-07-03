@@ -1,4 +1,7 @@
+"use client";
+
 import { clsx } from "@/lib/clsx";
+import { useI18n } from "@/components/language-provider";
 
 export function Logo({
   className,
@@ -7,6 +10,7 @@ export function Logo({
   className?: string;
   showText?: boolean;
 }) {
+  const { t } = useI18n();
   return (
     <span className={clsx("flex items-center gap-2.5", className)}>
       <img
@@ -23,7 +27,7 @@ export function Logo({
             RESCA
           </span>
           <span className="text-[0.6rem] font-medium uppercase tracking-[0.14em] text-muted">
-            Crop Diversity
+            {t.logoSubtitle}
           </span>
         </span>
       )}

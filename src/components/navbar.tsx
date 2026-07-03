@@ -5,20 +5,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { LangToggle } from "@/components/ui/lang-toggle";
 import { clsx } from "@/lib/clsx";
 import { EASE } from "@/lib/motion";
 import { site } from "@/lib/site";
-
-const links = [
-  { href: "#mission", label: "Mission" },
-  { href: "#cycle", label: "The cycle" },
-  { href: "#voices", label: "Voices" },
-  { href: "#donate", label: "Donate" },
-];
+import { useI18n } from "@/components/language-provider";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
+
+  const links = [
+    { href: "#mission", label: t.nav.mission },
+    { href: "#cycle", label: t.nav.cycle },
+    { href: "#voices", label: t.nav.voices },
+    { href: "#donate", label: t.nav.donate },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -56,6 +59,7 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <LangToggle />
           <ThemeToggle />
           <a
             href={site.donateUrl}
@@ -64,7 +68,7 @@ export function Navbar() {
             className="btn-shine hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-contrast shadow-[0_12px_30px_-12px_var(--glow)] transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
             <Heart size={16} className="fill-current" />
-            Donate
+            {t.nav.donateCta}
           </a>
           <button
             type="button"
@@ -105,7 +109,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 font-semibold text-primary-contrast"
               >
-                <Heart size={16} className="fill-current" /> Donate now
+                <Heart size={16} className="fill-current" /> {t.nav.donateNow}
               </a>
             </div>
           </motion.div>

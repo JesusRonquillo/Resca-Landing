@@ -1,24 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="RESCA">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#e6188d"/>
-      <stop offset="1" stop-color="#c2168a"/>
+      <stop offset="0" stop-color="#ec1c92"/>
+      <stop offset="0.55" stop-color="#c2168a"/>
+      <stop offset="1" stop-color="#7c0f57"/>
     </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.36" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
-  <g stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none">
-    <path d="M32 52 V26"/>
-  </g>
-  <g fill="#ffffff">
-    <ellipse cx="32" cy="16" rx="5" ry="7"/>
-    <ellipse cx="22" cy="26" rx="4.5" ry="6"/>
-    <ellipse cx="42" cy="26" rx="4.5" ry="6"/>
-    <ellipse cx="24" cy="37" rx="4" ry="5.2"/>
-    <ellipse cx="40" cy="37" rx="4" ry="5.2"/>
-  </g>
-  <g fill="#b6df2c">
-    <ellipse cx="32" cy="16" rx="2.4" ry="3.4"/>
-    <ellipse cx="22" cy="26" rx="2.2" ry="3"/>
-    <ellipse cx="42" cy="26" rx="2.2" ry="3"/>
+
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <rect width="64" height="64" rx="15" fill="url(#glow)"/>
+
+  <!-- stem + leaves -->
+  <path d="M32 55 L32 34" stroke="#6aa62c" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  <path d="M32 47 C26 46 22.5 48.5 21 52 C25.5 52 30 50.5 32 47 Z" fill="#7cbf2f"/>
+  <path d="M32 43 C38 42 41.5 44.5 43 48 C38.5 48 34 46.5 32 43 Z" fill="#8fce34"/>
+
+  <!-- quinoa panicle (full, colourful seed head) -->
+  <g>
+    <circle cx="32" cy="12.5" r="3.1" fill="#fff6dc"/>
+    <circle cx="28" cy="17"  r="3.0" fill="#f6d24d"/>
+    <circle cx="36" cy="17"  r="3.0" fill="#ffd9ef"/>
+    <circle cx="25" cy="21.5" r="3.1" fill="#b6df2c"/>
+    <circle cx="32" cy="21"  r="3.3" fill="#fff6dc"/>
+    <circle cx="39" cy="21.5" r="3.1" fill="#f6d24d"/>
+    <circle cx="23" cy="26.5" r="3.1" fill="#ff92cd"/>
+    <circle cx="30" cy="26"  r="3.3" fill="#b6df2c"/>
+    <circle cx="37" cy="26"  r="3.2" fill="#fff6dc"/>
+    <circle cx="42" cy="26.5" r="3.0" fill="#f6d24d"/>
+    <circle cx="25" cy="31.5" r="3.2" fill="#fff6dc"/>
+    <circle cx="32" cy="31"  r="3.4" fill="#ff92cd"/>
+    <circle cx="39" cy="31.5" r="3.2" fill="#b6df2c"/>
+    <circle cx="28" cy="36"  r="3.1" fill="#f6d24d"/>
+    <circle cx="36" cy="36"  r="3.1" fill="#fff6dc"/>
+    <circle cx="32" cy="40"  r="2.9" fill="#ff92cd"/>
   </g>
 </svg>

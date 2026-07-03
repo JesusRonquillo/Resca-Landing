@@ -11,13 +11,18 @@ const browser = await puppeteer.launch({
   args: ["--no-sandbox", "--disable-gpu", "--hide-scrollbars"],
 });
 
-async function shoot({ name, width, height, dark, full = true, scrollWait = true }) {
+async function shoot({ name, width, height, dark, lang, full = true, scrollWait = true }) {
   const page = await browser.newPage();
-  await page.evaluateOnNewDocument((t) => {
-    try {
-      localStorage.setItem("theme", t);
-    } catch {}
-  }, dark ? "dark" : "light");
+  await page.evaluateOnNewDocument(
+    (t, l) => {
+      try {
+        localStorage.setItem("theme", t);
+        if (l) localStorage.setItem("lang", l);
+      } catch {}
+    },
+    dark ? "dark" : "light",
+    lang || ""
+  );
   await page.setViewport({ width, height, deviceScaleFactor: 1 });
   await page.emulateMediaFeatures([
     { name: "prefers-color-scheme", value: dark ? "dark" : "light" },
@@ -45,9 +50,9 @@ async function shoot({ name, width, height, dark, full = true, scrollWait = true
   await page.close();
 }
 
-await shoot({ name: "desktop-dark", width: 1440, height: 900, dark: true });
-await shoot({ name: "desktop-light", width: 1440, height: 900, dark: false });
-await shoot({ name: "mobile-dark", width: 402, height: 850, dark: true });
-await shoot({ name: "mobile-light", width: 402, height: 850, dark: false });
+await shoot({ name: "desktop-dark", width: 1440, height: 900, dark: true, lang: "en" });
+await shoot({ name: "desktop-es", width: 1440, height: 900, dark: false, lang: "es" });
+await shoot({ name: "mobile-dark", width: 402, height: 850, dark: true, lang: "en" });
+await shoot({ name: "mobile-es", width: 402, height: 850, dark: false, lang: "es" });
 
 await browser.close();

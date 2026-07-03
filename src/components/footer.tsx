@@ -1,37 +1,39 @@
+"use client";
+
 import { Heart, Mail } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { site } from "@/lib/site";
-
-const nav = [
-  { href: "#mission", label: "Mission" },
-  { href: "#cycle", label: "The cycle" },
-  { href: "#voices", label: "Voices" },
-  { href: "#donate", label: "Donate" },
-];
+import { useI18n } from "@/components/language-provider";
 
 export function Footer() {
+  const { t } = useI18n();
+  const nav = [
+    { href: "#mission", label: t.nav.mission },
+    { href: "#cycle", label: t.nav.cycle },
+    { href: "#voices", label: t.nav.voices },
+    { href: "#donate", label: t.nav.donate },
+  ];
+
   return (
     <footer className="relative mt-8 border-t border-border bg-surface-2/50">
       <div className="container-x py-14">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div className="max-w-sm">
             <Logo />
-            <p className="mt-4 text-sm leading-relaxed text-muted">
-              {site.tagline}. {site.taglineEs}.
-            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted">{t.footer.tagline}</p>
             <a
               href={site.donateUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-shine mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-contrast"
             >
-              <Heart size={16} className="fill-current" /> Support a farmer
+              <Heart size={16} className="fill-current" /> {t.footer.support}
             </a>
           </div>
 
           <nav aria-label="Footer">
             <h3 className="font-display text-sm font-bold uppercase tracking-wide text-text">
-              Explore
+              {t.footer.explore}
             </h3>
             <ul className="mt-4 space-y-2.5">
               {nav.map((l) => (
@@ -49,7 +51,7 @@ export function Footer() {
 
           <div>
             <h3 className="font-display text-sm font-bold uppercase tracking-wide text-text">
-              Get in touch
+              {t.footer.getInTouch}
             </h3>
             <a
               href={`mailto:${site.email}`}
@@ -57,19 +59,17 @@ export function Footer() {
             >
               <Mail size={16} /> {site.email}
             </a>
-            <p className="mt-4 text-sm text-muted">
-              Working with highland communities across Peru &amp; Bolivia.
-            </p>
+            <p className="mt-4 text-sm text-muted">{t.footer.working}</p>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-sm text-muted sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {site.name}. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. {t.footer.rights}
           </p>
           <p className="inline-flex items-center gap-1.5">
-            Made with <Heart size={14} className="fill-primary text-primary" /> for crop
-            diversity.
+            {t.footer.madePre} <Heart size={14} className="fill-primary text-primary" />{" "}
+            {t.footer.madePost}
           </p>
         </div>
       </div>

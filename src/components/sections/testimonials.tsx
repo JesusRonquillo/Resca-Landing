@@ -6,10 +6,12 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "@/lib/content";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { Reveal } from "@/components/ui/reveal";
+import { useI18n } from "@/components/language-provider";
 
 export function Testimonials() {
   const [[index, dir], setState] = useState<[number, number]>([0, 0]);
   const reduce = useReducedMotion();
+  const { t } = useI18n();
   const count = testimonials.length;
 
   const go = useCallback(
@@ -23,7 +25,8 @@ export function Testimonials() {
     return () => clearInterval(id);
   }, [go, reduce]);
 
-  const t = testimonials[index];
+  const item = t.testimonials.items[index];
+  const image = testimonials[index].image;
 
   return (
     <section id="voices" className="relative scroll-mt-24 py-20 sm:py-28">
@@ -31,12 +34,12 @@ export function Testimonials() {
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-              Voices from the fields
+              {t.testimonials.eyebrow}
             </span>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-tight tracking-tight text-text">
-              The people behind the harvest
+              {t.testimonials.title}
             </h2>
           </Reveal>
         </div>
@@ -48,7 +51,7 @@ export function Testimonials() {
               <div className="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] md:min-h-[30rem]">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={t.image}
+                    key={image}
                     initial={reduce ? false : { opacity: 0, scale: 1.06 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={reduce ? undefined : { opacity: 0, scale: 1.02 }}
@@ -56,8 +59,8 @@ export function Testimonials() {
                     className="absolute inset-0"
                   >
                     <ResponsiveImage
-                      name={t.image}
-                      alt={`${t.name}, ${t.community}`}
+                      name={image}
+                      alt={`${item.name}, ${item.community}`}
                       sizes="(max-width: 768px) 92vw, 40vw"
                       widths={[480, 960]}
                     />
@@ -78,12 +81,12 @@ export function Testimonials() {
                     transition={{ duration: 0.4 }}
                   >
                     <p className="font-display text-xl font-semibold leading-snug text-text sm:text-2xl">
-                      “{t.quote}”
+                      “{item.quote}”
                     </p>
                     <footer className="mt-6">
-                      <p className="font-display text-lg font-bold text-primary">{t.name}</p>
-                      <p className="text-sm text-muted">{t.community}</p>
-                      <p className="text-sm text-muted">{t.place}</p>
+                      <p className="font-display text-lg font-bold text-primary">{item.name}</p>
+                      <p className="text-sm text-muted">{item.community}</p>
+                      <p className="text-sm text-muted">{item.place}</p>
                     </footer>
                   </motion.blockquote>
                 </AnimatePresence>
@@ -92,7 +95,7 @@ export function Testimonials() {
                   <button
                     type="button"
                     onClick={() => go(-1)}
-                    aria-label="Previous testimonial"
+                    aria-label={t.testimonials.prev}
                     className="grid h-11 w-11 place-items-center rounded-full border border-border text-text transition-colors hover:border-primary hover:text-primary"
                   >
                     <ChevronLeft size={18} />
@@ -100,7 +103,7 @@ export function Testimonials() {
                   <button
                     type="button"
                     onClick={() => go(1)}
-                    aria-label="Next testimonial"
+                    aria-label={t.testimonials.next}
                     className="grid h-11 w-11 place-items-center rounded-full border border-border text-text transition-colors hover:border-primary hover:text-primary"
                   >
                     <ChevronRight size={18} />
@@ -110,7 +113,7 @@ export function Testimonials() {
                       <button
                         key={i}
                         type="button"
-                        aria-label={`Go to testimonial ${i + 1}`}
+                        aria-label={`${t.testimonials.goto} ${i + 1}`}
                         onClick={() => setState([i, i > index ? 1 : -1])}
                         className="h-2 rounded-full transition-all duration-300"
                         style={{
