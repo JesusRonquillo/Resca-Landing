@@ -13,6 +13,7 @@ export function Logo({
   const { t } = useI18n();
   return (
     <span className={clsx("flex items-center gap-2.5", className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/logo-mark-320.webp"
         alt=""

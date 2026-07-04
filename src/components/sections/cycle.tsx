@@ -81,7 +81,7 @@ export function Cycle() {
                             className="absolute left-3 top-3 rounded-full px-3 py-1 font-display text-sm font-bold text-white shadow-lg"
                             style={{ backgroundColor: s.accent }}
                           >
-                            Step {s.n}
+                            {t.cycle.stepLabel} {s.n}
                           </span>
                         </div>
                       </div>

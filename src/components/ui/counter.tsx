@@ -19,6 +19,7 @@ export function Counter({ value, prefix = "", suffix = "", duration = 1800 }: Pr
   useEffect(() => {
     if (!inView) return;
     if (reduce) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplay(value);
       return;
     }

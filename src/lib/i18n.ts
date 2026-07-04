@@ -47,6 +47,7 @@ type Messages = {
     eyebrow: string;
     title: string;
     intro: string;
+    stepLabel: string;
     steps: { when: string; title: string; body: string; alt: string }[];
   };
   testimonials: {
@@ -145,6 +146,7 @@ export const messages: Record<Locale, Messages> = {
       title: "One season, five steps, alongside the community",
       intro:
         "In Puno, the quinoa planting season begins in September or October, depending on the rains. Each campaign follows these steps.",
+      stepLabel: "Step",
       steps: [
         {
           when: "July",
@@ -329,6 +331,7 @@ export const messages: Record<Locale, Messages> = {
       title: "Una campaña, cinco pasos, junto a la comunidad",
       intro:
         "En Puno, la campaña de siembra de quinua empieza en septiembre u octubre, según las lluvias. Cada campaña sigue estos pasos.",
+      stepLabel: "Paso",
       steps: [
         {
           when: "Julio",

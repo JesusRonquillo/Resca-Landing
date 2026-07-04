@@ -27,8 +27,6 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "26%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.22]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "42%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
   const floatY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
@@ -38,9 +36,20 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16"
     >
-      {/* Parallax background photo */}
+      {/* Slow Ken Burns zoom background photo */}
       <motion.div
-        style={reduce ? undefined : { y: bgY, scale: bgScale }}
+        initial={reduce ? false : { scale: 1.08 }}
+        animate={reduce ? undefined : { scale: 1.2 }}
+        transition={
+          reduce
+            ? undefined
+            : {
+                duration: 20,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "reverse",
+              }
+        }
         className="absolute inset-0 -z-20"
       >
         <ResponsiveImage
@@ -63,12 +72,6 @@ export function Hero() {
       {/* Floating illustration accents */}
       {!reduce && (
         <motion.div style={{ y: floatY }} className="pointer-events-none absolute inset-0 -z-10">
-          <img
-            src="/images/logo-mark-320.webp"
-            alt=""
-            aria-hidden
-            className="animate-float-slow absolute right-[3%] top-[4%] hidden w-32 opacity-85 drop-shadow-2xl md:block md:w-36 lg:w-40"
-          />
           <div className="animate-float absolute left-[4%] top-[30%] h-24 w-24 rounded-full bg-[var(--gold)]/25 blur-2xl" />
           <div className="animate-float-slow absolute bottom-[14%] right-[24%] h-28 w-28 rounded-full bg-[var(--leaf)]/25 blur-2xl" />
         </motion.div>

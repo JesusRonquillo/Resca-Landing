@@ -39,6 +39,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         typeof navigator !== "undefined" ? navigator.language : ""
       );
     }
+    // Client-only resolution after mount; intentional one-time sync.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLocaleState(next);
   }, []);
 
