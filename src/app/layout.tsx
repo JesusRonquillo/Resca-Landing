@@ -133,6 +133,16 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
+        {/* Preload the LCP hero image (AVIF) — must match ResponsiveImage's
+            srcset (ASSET_VERSION=4) so the browser reuses the same download. */}
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          imageSrcSet="/images/hero-field-480.avif?v=4 480w, /images/hero-field-960.avif?v=4 960w, /images/hero-field-1600.avif?v=4 1600w"
+          imageSizes="100vw"
+          fetchPriority="high"
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

@@ -20,6 +20,7 @@ export function Donate() {
               name="hero-field"
               alt=""
               sizes="100vw"
+              widths={[480, 960]}
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-[var(--magenta)]/85 mix-blend-multiply" />

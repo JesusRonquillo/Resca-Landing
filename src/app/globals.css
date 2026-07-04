@@ -192,11 +192,9 @@ body {
     var(--gold),
     var(--magenta-bright)
   );
-  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: aurora 8s ease infinite;
 }
 
 .glass {
