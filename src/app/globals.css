@@ -199,8 +199,8 @@ body {
 
 .glass {
   background: color-mix(in srgb, var(--surface) 72%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
   border: 1px solid var(--border);
 }
 
@@ -235,6 +235,18 @@ body {
 
 .grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Perf: give continuously animated / decorative layers their own compositor
+   layer so scrolling doesn't force them to repaint. No visual change. */
+.animate-marquee,
+.animate-float,
+.animate-float-slow {
+  will-change: transform;
+}
+
+.aurora-bg {
+  transform: translateZ(0);
 }
 
 .perspective {
