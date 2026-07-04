@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { ArrowRight, Heart, Sprout, MapPin } from "lucide-react";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { EASE } from "@/lib/motion";
@@ -11,31 +10,24 @@ import type { Variants } from "framer-motion";
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
 };
 const item: Variants = {
-  hidden: { opacity: 0, y: 26 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.75, ease: EASE },
+  },
 };
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { t } = useI18n();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "42%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const floatY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
   return (
-    <section
-      ref={ref}
-      className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16"
-    >
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16">
       {/* Slow Ken Burns zoom background photo */}
       <m.div
         initial={reduce ? false : { scale: 1.08 }}
@@ -71,17 +63,19 @@ export function Hero() {
 
       {/* Floating illustration accents */}
       {!reduce && (
-        <m.div style={{ y: floatY }} className="pointer-events-none absolute inset-0 -z-10">
+        <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="animate-float absolute left-[4%] top-[30%] h-24 w-24 rounded-full bg-[var(--gold)]/25 blur-2xl" />
           <div className="animate-float-slow absolute bottom-[14%] right-[24%] h-28 w-28 rounded-full bg-[var(--leaf)]/25 blur-2xl" />
-        </m.div>
+        </div>
       )}
 
-      <m.div
-        style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="container-x"
-      >
-        <m.div variants={container} initial="hidden" animate="show" className="max-w-3xl">
+      <div className="container-x">
+        <m.div
+          variants={container}
+          initial={reduce ? false : "hidden"}
+          animate="show"
+          className="max-w-3xl"
+        >
           <m.span
             variants={item}
             className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-text"
@@ -147,7 +141,7 @@ export function Hero() {
             </div>
           </m.dl>
         </m.div>
-      </m.div>
+      </div>
 
       {/* Scroll cue */}
       {!reduce && (
