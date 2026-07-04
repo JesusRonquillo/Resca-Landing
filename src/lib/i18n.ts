@@ -78,6 +78,12 @@ type Messages = {
     madePre: string;
     madePost: string;
   };
+  cookies: {
+    title: string;
+    body: string;
+    accept: string;
+    decline: string;
+  };
 };
 
 export const messages: Record<Locale, Messages> = {
@@ -265,6 +271,12 @@ export const messages: Record<Locale, Messages> = {
       madePre: "Made with",
       madePost: "for crop diversity.",
     },
+    cookies: {
+      title: "We value your privacy",
+      body: "We use cookies to remember your preferences — like language and theme — and to help pages and images load faster on your next visit.",
+      accept: "Accept",
+      decline: "Decline",
+    },
   },
   es: {
     logoSubtitle: "Diversidad de Cultivos",
@@ -449,6 +461,12 @@ export const messages: Record<Locale, Messages> = {
       rights: "Todos los derechos reservados.",
       madePre: "Hecho con",
       madePost: "por la diversidad de cultivos.",
+    },
+    cookies: {
+      title: "Valoramos tu privacidad",
+      body: "Usamos cookies para recordar tus preferencias —como el idioma y el tema— y para que las páginas e imágenes carguen más rápido en tu próxima visita.",
+      accept: "Aceptar",
+      decline: "Rechazar",
     },
   },
 };

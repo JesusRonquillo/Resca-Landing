@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
+import { CookieBanner } from "@/components/cookie-banner";
 import { site } from "@/lib/site";
 
 const inter = Inter({
@@ -146,6 +147,7 @@ export default function RootLayout({
               Skip to content
             </a>
             {children}
+            <CookieBanner />
           </LanguageProvider>
         </ThemeProvider>
         <script
