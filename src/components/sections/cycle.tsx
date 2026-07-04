@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
 import { steps } from "@/lib/content";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
@@ -42,7 +42,7 @@ export function Cycle() {
         <div ref={ref} className="relative mx-auto mt-16 max-w-5xl">
           {/* Center rail (desktop) */}
           <div className="absolute left-6 top-0 h-full w-px bg-border md:left-1/2 md:-translate-x-1/2">
-            <motion.div
+            <m.div
               style={reduce ? undefined : { scaleY: lineScale }}
               className="h-full w-full origin-top bg-gradient-to-b from-[var(--magenta)] via-[var(--gold)] to-[var(--leaf)]"
             />

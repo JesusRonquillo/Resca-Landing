@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "@/lib/content";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
@@ -50,7 +50,7 @@ export function Testimonials() {
               {/* Photo */}
               <div className="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] md:min-h-[30rem]">
                 <AnimatePresence mode="wait">
-                  <motion.div
+                  <m.div
                     key={image}
                     initial={reduce ? false : { opacity: 0, scale: 1.06 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -65,7 +65,7 @@ export function Testimonials() {
                       widths={[480, 960]}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:bg-gradient-to-r" />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
               </div>
 
@@ -73,7 +73,7 @@ export function Testimonials() {
               <div className="relative flex flex-col justify-center p-7 sm:p-10">
                 <Quote className="mb-4 text-primary/40" size={44} />
                 <AnimatePresence mode="wait">
-                  <motion.blockquote
+                  <m.blockquote
                     key={index}
                     initial={reduce ? false : { opacity: 0, x: dir >= 0 ? 30 : -30 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -88,7 +88,7 @@ export function Testimonials() {
                       <p className="text-sm text-muted">{item.community}</p>
                       <p className="text-sm text-muted">{item.place}</p>
                     </footer>
-                  </motion.blockquote>
+                  </m.blockquote>
                 </AnimatePresence>
 
                 <div className="mt-8 flex items-center gap-3">

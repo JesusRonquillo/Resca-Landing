@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -23,7 +23,7 @@ export function ThemeToggle() {
     >
       <AnimatePresence mode="wait" initial={false}>
         {mounted && (
-          <motion.span
+          <m.span
             key={isDark ? "moon" : "sun"}
             initial={{ y: -18, opacity: 0, rotate: -30 }}
             animate={{ y: 0, opacity: 1, rotate: 0 }}
@@ -31,7 +31,7 @@ export function ThemeToggle() {
             transition={{ duration: 0.25 }}
           >
             {isDark ? <Moon size={18} /> : <Sun size={18} />}
-          </motion.span>
+          </m.span>
         )}
       </AnimatePresence>
     </button>

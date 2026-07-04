@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowRight, Heart, Sprout, MapPin } from "lucide-react";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { EASE } from "@/lib/motion";
@@ -37,7 +37,7 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16"
     >
       {/* Slow Ken Burns zoom background photo */}
-      <motion.div
+      <m.div
         initial={reduce ? false : { scale: 1.08 }}
         animate={reduce ? undefined : { scale: 1.2 }}
         transition={
@@ -63,7 +63,7 @@ export function Hero() {
           className="absolute inset-0"
           style={{ background: "var(--hero-overlay)" }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Aurora + grain */}
       <div className="aurora-bg absolute inset-0 -z-10 opacity-80" />
@@ -71,42 +71,42 @@ export function Hero() {
 
       {/* Floating illustration accents */}
       {!reduce && (
-        <motion.div style={{ y: floatY }} className="pointer-events-none absolute inset-0 -z-10">
+        <m.div style={{ y: floatY }} className="pointer-events-none absolute inset-0 -z-10">
           <div className="animate-float absolute left-[4%] top-[30%] h-24 w-24 rounded-full bg-[var(--gold)]/25 blur-2xl" />
           <div className="animate-float-slow absolute bottom-[14%] right-[24%] h-28 w-28 rounded-full bg-[var(--leaf)]/25 blur-2xl" />
-        </motion.div>
+        </m.div>
       )}
 
-      <motion.div
+      <m.div
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
         className="container-x"
       >
-        <motion.div variants={container} initial="hidden" animate="show" className="max-w-3xl">
-          <motion.span
+        <m.div variants={container} initial="hidden" animate="show" className="max-w-3xl">
+          <m.span
             variants={item}
             className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-text"
           >
             <Sprout size={16} className="text-[var(--leaf)]" />
             {t.hero.badge}
-          </motion.span>
+          </m.span>
 
-          <motion.h1
+          <m.h1
             variants={item}
             className="mt-6 font-display text-[clamp(2.6rem,7vw,5.4rem)] font-extrabold leading-[0.98] tracking-tight text-text"
           >
             {t.hero.titlePre}{" "}
             <span className="text-gradient-quinoa">{t.hero.titleHighlight}</span>
             {t.hero.titlePost}
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             variants={item}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
           >
             {t.hero.subtitle}
-          </motion.p>
+          </m.p>
 
-          <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
+          <m.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href={site.donateUrl}
               target="_blank"
@@ -123,9 +123,9 @@ export function Hero() {
               {t.hero.learn}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </a>
-          </motion.div>
+          </m.div>
 
-          <motion.dl
+          <m.dl
             variants={item}
             className="mt-12 flex flex-wrap gap-x-10 gap-y-4"
           >
@@ -145,26 +145,26 @@ export function Hero() {
               </dt>
               <dd className="text-sm text-muted">{t.hero.highlandLabel}</dd>
             </div>
-          </motion.dl>
-        </motion.div>
-      </motion.div>
+          </m.dl>
+        </m.div>
+      </m.div>
 
       {/* Scroll cue */}
       {!reduce && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2"
         >
           <div className="flex h-9 w-6 items-start justify-center rounded-full border-2 border-muted/50 p-1">
-            <motion.span
+            <m.span
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.6, repeat: Infinity }}
               className="h-1.5 w-1.5 rounded-full bg-primary"
             />
           </div>
-        </motion.div>
+        </m.div>
       )}
     </section>
   );

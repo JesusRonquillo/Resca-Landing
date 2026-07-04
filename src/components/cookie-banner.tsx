@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Cookie } from "lucide-react";
 import { useI18n } from "@/components/language-provider";
 import { EASE } from "@/lib/motion";
@@ -34,7 +34,7 @@ export function CookieBanner() {
   return (
     <AnimatePresence>
       {visible && (
-        <motion.div
+        <m.div
           role="dialog"
           aria-live="polite"
           aria-label={t.cookies.title}
@@ -74,7 +74,7 @@ export function CookieBanner() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

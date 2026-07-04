@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { EASE } from "@/lib/motion";
 
@@ -14,7 +14,7 @@ type Props = {
 
 export function Reveal({ children, delay = 0, y = 28, className, as = "div" }: Props) {
   const reduce = useReducedMotion();
-  const MotionTag = motion[as];
+  const MotionTag = m[as];
 
   return (
     <MotionTag

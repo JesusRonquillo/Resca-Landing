@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  motion,
+  m,
   useMotionValue,
   useSpring,
   useTransform,
@@ -41,13 +41,13 @@ export function TiltCard({ children, className, intensity = 10 }: Props) {
   }
 
   return (
-    <motion.div
+    <m.div
       onPointerMove={onMove}
       onPointerLeave={reset}
       style={reduce ? undefined : { rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
       className={clsx("will-change-transform", className)}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

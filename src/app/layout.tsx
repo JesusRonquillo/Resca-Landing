@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
+import { MotionProvider } from "@/components/motion-provider";
 import { CookieBanner } from "@/components/cookie-banner";
 import { site } from "@/lib/site";
 
@@ -14,7 +15,7 @@ const inter = Inter({
 
 const poppins = Poppins({
   variable: "--font-poppins",
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -150,14 +151,16 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            <a
-              href="#main"
-              className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-primary-contrast focus:font-semibold"
-            >
-              Skip to content
-            </a>
-            {children}
-            <CookieBanner />
+            <MotionProvider>
+              <a
+                href="#main"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-primary-contrast focus:font-semibold"
+              >
+                Skip to content
+              </a>
+              {children}
+              <CookieBanner />
+            </MotionProvider>
           </LanguageProvider>
         </ThemeProvider>
         <script
