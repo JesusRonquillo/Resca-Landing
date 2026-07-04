@@ -12,6 +12,6 @@ export const site = {
     "https://donate.givingworks.org.uk/Farmer_AgroEcoServices/~my-donation",
   donateSection: "#donate",
   currency: "£",
-  email: "hello@resca.org",
+  email: "rescafund@gmail.com",
   countries: ["Peru", "Bolivia"],
 } as const;
