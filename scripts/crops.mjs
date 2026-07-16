@@ -10,6 +10,10 @@
 export const aiImages = {
   "hero-field": "ai-src/hero-field.png",
   "quinoa-close": "ai-src/quinoa-close.png",
+  // step-2 (Agreements): the real photo showed a former minister, which reads
+  // as too political, so we use a neutral illustration of a RESCA rep handing
+  // a conservation agreement to a farmer.
+  "step-2": "ai-src/step-2.png",
   "step-3": "ai-src/step-3.png",
   "step-4": "ai-src/step-4.png",
   "step-5": "ai-src/step-5.png",
@@ -19,7 +23,6 @@ export const aiImages = {
 // step-1..3 are 4:3 landscape crops framed on the subject / faces.
 export const crops = {
   "step-1": { src: "HOJA 3.jpg", left: 120, top: 640, width: 720, height: 540 },
-  "step-2": { src: "HOJA 4.jpg", left: 120, top: 500, width: 720, height: 540 },
   "t-santusa": { src: "HOJA 8.jpg", left: 1000, top: 360, width: 875, height: 1340 },
   "t-carlos": { src: "HOJA 9.jpg", left: 215, top: 350, width: 745, height: 1370 },
   "t-marcelino": { src: "HOJA 10.jpg", left: 1005, top: 360, width: 828, height: 1340 },

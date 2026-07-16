@@ -11,6 +11,7 @@ export function Footer() {
     { href: "#mission", label: t.nav.mission },
     { href: "#cycle", label: t.nav.cycle },
     { href: "#voices", label: t.nav.voices },
+    { href: "#team", label: t.nav.team },
     { href: "#donate", label: t.nav.donate },
   ];
 
@@ -63,7 +64,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-sm text-muted sm:flex-row">
+        <p className="mt-12 border-t border-border pt-6 text-xs leading-relaxed text-muted">
+          {t.footer.imageCredit}
+        </p>
+
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 text-sm text-muted sm:flex-row">
           <p>
             © {new Date().getFullYear()} {site.name}. {t.footer.rights}
           </p>

@@ -2,7 +2,7 @@ import { clsx } from "@/lib/clsx";
 
 // Bump when the optimized image contents change (same filenames are cached
 // immutably by the browser, so a version query busts stale copies).
-const ASSET_VERSION = "4";
+const ASSET_VERSION = "5";
 
 type Props = {
   name: string;

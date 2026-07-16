@@ -20,6 +20,7 @@ export function Navbar() {
     { href: "#mission", label: t.nav.mission },
     { href: "#cycle", label: t.nav.cycle },
     { href: "#voices", label: t.nav.voices },
+    { href: "#team", label: t.nav.team },
     { href: "#donate", label: t.nav.donate },
   ];
 

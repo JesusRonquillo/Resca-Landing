@@ -56,16 +56,10 @@ export function Mission() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem]">
                 <ResponsiveImage
                   name="quinoa-close"
-                  alt={t.mission.badgeTitle}
+                  alt={t.mission.imageAlt}
                   sizes="(max-width: 1024px) 90vw, 45vw"
                 />
               </div>
-            </div>
-            <div className="glass absolute -bottom-6 -left-4 max-w-[15rem] rounded-2xl p-4 shadow-xl sm:-left-8">
-              <p className="font-display text-2xl font-extrabold text-gradient">
-                {t.mission.badgeTitle}
-              </p>
-              <p className="mt-1 text-sm text-muted">{t.mission.badgeBody}</p>
             </div>
           </TiltCard>
         </Reveal>
