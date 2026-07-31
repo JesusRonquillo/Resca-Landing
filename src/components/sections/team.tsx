@@ -1,5 +1,6 @@
 "use client";
 
+import { Plus } from "lucide-react";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { Reveal } from "@/components/ui/reveal";
 import { useI18n } from "@/components/language-provider";
@@ -29,26 +30,46 @@ export function Team() {
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-2">
+        <div className="mx-auto mt-14 grid max-w-4xl gap-6 sm:grid-cols-2">
           {t.team.members.map((m, i) => (
             <Reveal key={m.name} delay={0.12 + i * 0.08}>
-              <article className="card-surface flex h-full flex-col overflow-hidden rounded-[1.75rem] p-2 sm:flex-row">
-                <div className="relative w-full shrink-0 overflow-hidden rounded-[1.4rem] sm:w-40 md:w-44">
-                  <div className="relative aspect-[4/5] sm:h-full">
-                    <ResponsiveImage
-                      name={memberImages[i]}
-                      alt={m.name}
-                      sizes="(max-width: 640px) 92vw, 180px"
-                      widths={[480, 960]}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col justify-center p-5 sm:p-6">
-                  <h3 className="font-display text-xl font-extrabold tracking-tight text-text">
+              <article
+                tabIndex={0}
+                aria-label={`${m.name} — ${m.role}`}
+                className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-border shadow-[0_18px_40px_-24px_var(--glow)] outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <ResponsiveImage
+                  name={memberImages[i]}
+                  alt={m.name}
+                  sizes="(max-width: 640px) 92vw, 40vw"
+                  widths={[480, 960]}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 group-focus-within:scale-105"
+                />
+
+                {/* Hint icon */}
+                <span className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-black/40 text-white backdrop-blur transition-transform duration-300 group-hover:rotate-45 group-focus-within:rotate-45">
+                  <Plus size={18} />
+                </span>
+
+                {/* Base title (fades out on hover) */}
+                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/25 to-transparent p-6 transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+                  <h3 className="font-display text-2xl font-extrabold tracking-tight text-white">
                     {m.name}
                   </h3>
-                  <p className="mt-1 text-sm font-semibold text-primary">{m.role}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{m.bio}</p>
+                  <p className="mt-1 text-sm font-semibold text-white/85">{m.role}</p>
+                </div>
+
+                {/* Bio overlay (fades in on hover / focus) */}
+                <div className="absolute inset-0 flex flex-col justify-end bg-[var(--magenta)]/85 p-6 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+                  <h3 className="font-display text-xl font-extrabold tracking-tight text-white">
+                    {m.name}
+                  </h3>
+                  <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-white/80">
+                    {m.role}
+                  </p>
+                  <p className="mt-3 max-h-[62%] overflow-y-auto pr-1 text-sm leading-relaxed text-white/90">
+                    {m.bio}
+                  </p>
                 </div>
               </article>
             </Reveal>
