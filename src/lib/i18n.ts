@@ -57,6 +57,8 @@ type Messages = {
     prev: string;
     next: string;
     goto: string;
+    pause: string;
+    play: string;
     items: { quote: string; name: string; community: string; place: string }[];
   };
   whySupport: {
@@ -71,9 +73,7 @@ type Messages = {
     eyebrow: string;
     title: string;
     body: string;
-    experience: string[];
-    roles: { title: string; body: string }[];
-    note: string;
+    members: { name: string; role: string; bio: string }[];
   };
   donate: {
     badge: string;
@@ -81,6 +81,7 @@ type Messages = {
     subtitle: string;
     most: string;
     give: string;
+    convert: string;
     checklist: string[];
     secure: { pre: string; post: string };
     tiers: { title: string; body: string }[];
@@ -214,6 +215,8 @@ export const messages: Record<Locale, Messages> = {
       prev: "Previous testimonial",
       next: "Next testimonial",
       goto: "Go to testimonial",
+      pause: "Pause",
+      play: "Play",
       items: [
         {
           quote:
@@ -281,27 +284,19 @@ export const messages: Record<Locale, Messages> = {
     team: {
       eyebrow: "Who we are",
       title: "The team behind RESCA",
-      body: "RESCA is run by a multidisciplinary team with over a decade of experience rewarding conservation in the Andes — agronomists, field technicians and conservation specialists who work hand in hand with communities.",
-      experience: [
-        "15+ years rewarding crop conservation",
-        "2,600+ farmers across four Latin American countries",
-        "Field-verified, community-led methodology",
-      ],
-      roles: [
+      body: "RESCA's team is made up of national and international experts with more than 15 years developing and delivering the initiative alongside Andean communities.",
+      members: [
         {
-          title: "Field coordination",
-          body: "Leads campaigns on the ground, from prioritization to reward ceremonies, alongside each community.",
+          name: "Kleny Arpazi",
+          role: "Field coordinator · Peru",
+          bio: "A Peruvian citizen and expert in quinoa cultivation and agricultural extension, Kleny has worked with RESCA for 15 years and is linked to the regional government's agrarian sector. He leads implementation in the field: promoting and supporting the organized participation of farmer groups in RESCA, seed diffusion, frequent verification and monitoring visits, extension events (field days and exchanges of experience, quality seed selection techniques, participation in local fairs) and the reward ceremony, with the participation of local, regional and national authorities.",
         },
         {
-          title: "Agronomists & technicians",
-          body: "Guide seed selection and run the verification visits that confirm varieties are truly being grown.",
-        },
-        {
-          title: "Monitoring & partnerships",
-          body: "Track impact and build the alliances that make the conservation model transparent and durable.",
+          name: "Dr. Adam G. Drucker",
+          role: "International RESCA expert · Director, GivingWorks “Farmer AgroEcoServices”",
+          bio: "An ecological economist and international RESCA expert, Adam directs the GivingWorks charitable foundation “Farmer AgroEcoServices”, under which this RESCA initiative is carried out. He has been deeply involved in developing and testing RESCA (also known as PACS) for more than 15 years.",
         },
       ],
-      note: "Want to add specific team members and their bios? This section is ready to feature real names, roles and photos.",
     },
     donate: {
       badge: "Your gift plants resilience",
@@ -310,6 +305,7 @@ export const messages: Record<Locale, Messages> = {
         "Every contribution goes into seeds, monitoring and community-chosen rewards that keep endangered varieties growing season after season.",
       most: "Most loved",
       give: "Give",
+      convert: "Not in £? Convert to your currency",
       checklist: [
         "Transparent, verified fieldwork",
         "100% community-chosen rewards",
@@ -321,16 +317,20 @@ export const messages: Record<Locale, Messages> = {
       },
       tiers: [
         {
-          title: "Seed keeper",
-          body: "Provides rare seed of an endangered variety to one family for a full planting season.",
+          title: "Back a producer",
+          body: "On average, funds one producer's participation and their community-chosen in-kind reward, presented at a public ceremony.",
         },
         {
-          title: "Season guardian",
-          body: "Backs monitoring visits and extension events that keep a variety thriving to harvest.",
+          title: "Variety guardian",
+          body: "Funds monitoring visits and extension events that carry more than one variety through to harvest.",
         },
         {
-          title: "Community reward",
-          body: "Funds a community-chosen in-kind reward celebrated at a public award ceremony.",
+          title: "Small community",
+          body: "Funds the participation of a group of producers in a small community.",
+        },
+        {
+          title: "Large community",
+          body: "Funds the participation of a group of producers in a large community.",
         },
       ],
     },
@@ -462,6 +462,8 @@ export const messages: Record<Locale, Messages> = {
       prev: "Testimonio anterior",
       next: "Siguiente testimonio",
       goto: "Ir al testimonio",
+      pause: "Pausar",
+      play: "Reproducir",
       items: [
         {
           quote:
@@ -529,27 +531,19 @@ export const messages: Record<Locale, Messages> = {
     team: {
       eyebrow: "Quiénes somos",
       title: "El equipo detrás de RESCA",
-      body: "RESCA está a cargo de un equipo multidisciplinario con más de una década de experiencia recompensando la conservación en los Andes: agrónomos, técnicos de campo y especialistas en conservación que trabajan mano a mano con las comunidades.",
-      experience: [
-        "15+ años recompensando la conservación de cultivos",
-        "2,600+ agricultores en cuatro países de América Latina",
-        "Metodología verificada en campo y liderada por la comunidad",
-      ],
-      roles: [
+      body: "El equipo de RESCA está formado por expertos nacionales e internacionales con más de 15 años desarrollando y ejecutando la iniciativa junto a las comunidades andinas.",
+      members: [
         {
-          title: "Coordinación de campo",
-          body: "Lidera las campañas en el terreno, desde la priorización hasta las ceremonias de recompensas, junto a cada comunidad.",
+          name: "Kleny Arpazi",
+          role: "Coordinador de trabajo de campo · Perú",
+          bio: "Ciudadano peruano, experto en cultivo de quinua y extensión agrícola, Kleny lleva 15 años trabajando con RESCA y está vinculado al sector agrario del gobierno regional. Se encarga de la implementación en campo: promueve y apoya la participación organizada de los grupos de agricultores en la iniciativa RESCA, la difusión de semillas, visitas frecuentes de verificación, evaluación y seguimiento, así como la organización de eventos de extensión (días de campo o intercambio de experiencias, técnicas de selección de semillas de calidad, participación en ferias locales) y la ceremonia de entrega de recompensas con la participación de autoridades locales, regionales y nacionales.",
         },
         {
-          title: "Agrónomos y técnicos",
-          body: "Guían la selección de semilla y realizan las visitas de verificación que confirman que las variedades sí se cultivan.",
-        },
-        {
-          title: "Monitoreo y alianzas",
-          body: "Miden el impacto y construyen las alianzas que hacen el modelo de conservación transparente y duradero.",
+          name: "Dr. Adam G. Drucker",
+          role: "Experto internacional RESCA · Director, GivingWorks “Farmer AgroEcoServices”",
+          bio: "Economista ecológico y experto internacional en RESCA, dirige la Fundación Benéfica GivingWorks “Farmer AgroEcoServices”, bajo la cual se lleva a cabo esta iniciativa RESCA. Ha estado muy involucrado en el desarrollo y las pruebas de RESCA (también conocido como PACS, en inglés) durante más de 15 años.",
         },
       ],
-      note: "¿Quieres añadir integrantes específicos del equipo y sus reseñas? Esta sección está lista para incluir nombres reales, roles y fotos.",
     },
     donate: {
       badge: "Tu donación siembra resiliencia",
@@ -558,6 +552,7 @@ export const messages: Record<Locale, Messages> = {
         "Cada aporte se destina a semillas, monitoreo y recompensas elegidas por la comunidad que mantienen vivas las variedades amenazadas campaña tras campaña.",
       most: "El más elegido",
       give: "Dona",
+      convert: "¿No usas £? Convierte a tu moneda",
       checklist: [
         "Trabajo de campo transparente y verificado",
         "Recompensas 100% elegidas por la comunidad",
@@ -569,16 +564,20 @@ export const messages: Record<Locale, Messages> = {
       },
       tiers: [
         {
-          title: "Guardián de semillas",
-          body: "Entrega semilla rara de una variedad amenazada a una familia por toda una campaña.",
+          title: "Impulsa a un productor",
+          body: "Financia en promedio la participación de un productor y su recompensa elegida en especie, entregada en una ceremonia pública.",
         },
         {
-          title: "Guardián de la campaña",
-          body: "Financia visitas de monitoreo y eventos de extensión que llevan una variedad hasta la cosecha.",
+          title: "Guardián de variedades",
+          body: "Financia visitas de monitoreo y eventos de extensión que llevan más de una variedad hasta la cosecha.",
         },
         {
-          title: "Recompensa comunitaria",
-          body: "Financia una recompensa en especie elegida por la comunidad y entregada en una ceremonia pública.",
+          title: "Comunidad pequeña",
+          body: "Financia la participación de un grupo de productores en una comunidad pequeña.",
+        },
+        {
+          title: "Comunidad grande",
+          body: "Financia la participación de un grupo de productores en una comunidad grande.",
         },
       ],
     },

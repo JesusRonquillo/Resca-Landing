@@ -1,10 +1,9 @@
 "use client";
 
-import { Check, Heart, Sprout } from "lucide-react";
+import { Check, Heart, Sprout, ExternalLink } from "lucide-react";
 import { tiers } from "@/lib/content";
 import { Reveal } from "@/components/ui/reveal";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
-import { clsx } from "@/lib/clsx";
 import { site } from "@/lib/site";
 import { useI18n } from "@/components/language-provider";
 
@@ -45,48 +44,25 @@ export function Donate() {
               </Reveal>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+            <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {tiers.map((tier, i) => {
-                const featured = "featured" in tier && tier.featured;
                 const info = t.donate.tiers[i];
                 return (
                   <Reveal key={info.title} delay={0.12 + i * 0.08}>
-                    <div
-                      className={clsx(
-                        "relative flex h-full flex-col rounded-3xl p-6 backdrop-blur transition-transform duration-300 hover:-translate-y-1.5",
-                        featured
-                          ? "bg-white text-[#26101c] shadow-2xl ring-2 ring-white"
-                          : "bg-white/10 text-white ring-1 ring-white/25"
-                      )}
-                    >
-                      {featured && (
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--gold)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#26101c]">
-                          {t.donate.most}
-                        </span>
-                      )}
+                    <div className="relative flex h-full flex-col rounded-3xl bg-white/10 p-6 text-white ring-1 ring-white/25 backdrop-blur transition-transform duration-300 hover:-translate-y-1.5">
                       <p className="font-display text-4xl font-extrabold">
                         {site.currency}
                         {tier.amount}
                       </p>
                       <p className="mt-1 font-display text-lg font-bold">{info.title}</p>
-                      <p
-                        className={clsx(
-                          "mt-2 flex-1 text-sm leading-relaxed",
-                          featured ? "text-[#715864]" : "text-white/80"
-                        )}
-                      >
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-white/80">
                         {info.body}
                       </p>
                       <a
                         href={`${site.donateUrl}?amount=${tier.amount}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={clsx(
-                          "btn-shine mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold transition-transform hover:-translate-y-0.5",
-                          featured
-                            ? "bg-primary text-primary-contrast"
-                            : "bg-white text-[#26101c]"
-                        )}
+                        className="btn-shine mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-[#26101c] transition-transform hover:-translate-y-0.5"
                       >
                         <Heart size={16} className="fill-current" /> {t.donate.give}{" "}
                         {site.currency}
@@ -97,6 +73,20 @@ export function Donate() {
                 );
               })}
             </div>
+
+            <Reveal delay={0.16}>
+              <p className="mt-6 text-center">
+                <a
+                  href="https://www.xe.com/currencyconverter/convert/?Amount=100&From=GBP&To=USD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/80 underline underline-offset-2 transition-colors hover:text-[var(--lime)]"
+                >
+                  {t.donate.convert}
+                  <ExternalLink size={14} />
+                </a>
+              </p>
+            </Reveal>
 
             <Reveal delay={0.2}>
               <ul className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/85">

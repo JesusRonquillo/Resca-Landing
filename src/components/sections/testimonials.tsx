@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Pause, Play } from "lucide-react";
 import { testimonials } from "@/lib/content";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { Reveal } from "@/components/ui/reveal";
@@ -10,6 +10,8 @@ import { useI18n } from "@/components/language-provider";
 
 export function Testimonials() {
   const [[index, dir], setState] = useState<[number, number]>([0, 0]);
+  const [paused, setPaused] = useState(false);
+  const [hovering, setHovering] = useState(false);
   const reduce = useReducedMotion();
   const { t } = useI18n();
   const count = testimonials.length;
@@ -20,10 +22,10 @@ export function Testimonials() {
   );
 
   useEffect(() => {
-    if (reduce) return;
-    const id = setInterval(() => go(1), 7000);
+    if (reduce || paused || hovering) return;
+    const id = setInterval(() => go(1), 9000);
     return () => clearInterval(id);
-  }, [go, reduce]);
+  }, [go, reduce, paused, hovering]);
 
   const item = t.testimonials.items[index];
   const image = testimonials[index].image;
@@ -45,7 +47,13 @@ export function Testimonials() {
         </div>
 
         <Reveal delay={0.1} className="mx-auto mt-14 max-w-5xl">
-          <div className="card-surface relative overflow-hidden rounded-[2rem] p-2">
+          <div
+            className="card-surface relative overflow-hidden rounded-[2rem] p-2"
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+            onFocusCapture={() => setHovering(true)}
+            onBlurCapture={() => setHovering(false)}
+          >
             <div className="grid items-stretch gap-0 md:grid-cols-[minmax(0,0.85fr)_1.15fr]">
               {/* Photo */}
               <div className="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] md:min-h-[30rem]">
@@ -107,6 +115,15 @@ export function Testimonials() {
                     className="grid h-11 w-11 place-items-center rounded-full border border-border text-text transition-colors hover:border-primary hover:text-primary"
                   >
                     <ChevronRight size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPaused((p) => !p)}
+                    aria-label={paused ? t.testimonials.play : t.testimonials.pause}
+                    aria-pressed={paused}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-text transition-colors hover:border-primary hover:text-primary"
+                  >
+                    {paused ? <Play size={16} /> : <Pause size={16} />}
                   </button>
                   <div className="ml-2 flex gap-1.5">
                     {testimonials.map((_, i) => (
