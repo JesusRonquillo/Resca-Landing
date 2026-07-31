@@ -77,8 +77,9 @@ export function Testimonials() {
                 </AnimatePresence>
               </div>
 
-              {/* Quote */}
-              <div className="relative flex flex-col justify-center p-7 sm:p-10">
+              {/* Quote — fixed min height so auto-rotation never changes the
+                  card height (which would shift the page / cause "jumps"). */}
+              <div className="relative flex min-h-[24rem] flex-col justify-center p-7 sm:p-10 md:min-h-[30rem]">
                 <Quote className="mb-4 text-primary/40" size={44} />
                 <AnimatePresence mode="wait">
                   <m.blockquote
