@@ -6,6 +6,7 @@ import { Mission } from "@/components/sections/mission";
 import { Cycle } from "@/components/sections/cycle";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Team } from "@/components/sections/team";
+import { VideoSection } from "@/components/sections/video";
 import { WhySupport } from "@/components/sections/why-support";
 import { Donate } from "@/components/sections/donate";
 import { Footer } from "@/components/footer";
@@ -22,6 +23,7 @@ export default function Home() {
         <Cycle />
         <Testimonials />
         <Team />
+        <VideoSection />
         <WhySupport />
         <Donate />
       </main>

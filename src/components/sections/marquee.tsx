@@ -1,16 +1,16 @@
 const words = [
   "Kañihua",
-  "Pasankalla",
+  "Misa quinua",
   "Real Blanca",
+  "Kellowitulla",
   "Wariponcho",
   "Ayrampito",
   "Chullpi",
-  "Negra Collana",
+  "Cuchiwilla",
   "Rosada de Juli",
-  "Kcoito",
+  "Ccoito",
   "Witulla",
-  "Amarilla de Marangani",
-  "Salcedo INIA",
+  "Choclito",
 ];
 
 export function MarqueeBand() {

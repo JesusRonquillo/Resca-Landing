@@ -75,6 +75,12 @@ type Messages = {
     body: string;
     members: { name: string; role: string; bio: string }[];
   };
+  video: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    watch: string;
+  };
   donate: {
     badge: string;
     title: string;
@@ -289,7 +295,7 @@ export const messages: Record<Locale, Messages> = {
         {
           name: "Kleny Arpazi",
           role: "Field coordinator · Peru",
-          bio: "A Peruvian citizen and expert in quinoa cultivation and agricultural extension, Kleny has worked with RESCA for 15 years and is linked to the regional government's agrarian sector. He leads implementation in the field: promoting and supporting the organized participation of farmer groups in RESCA, seed diffusion, frequent verification and monitoring visits, extension events (field days and exchanges of experience, quality seed selection techniques, participation in local fairs) and the reward ceremony, with the participation of local, regional and national authorities.",
+          bio: "A Peruvian citizen and expert in quinoa cultivation and agricultural extension, Kleny has worked with RESCA for 15 years and is linked to the regional government's agrarian sector. She leads implementation in the field: promoting and supporting the organized participation of farmer groups in RESCA, seed diffusion, frequent verification and monitoring visits, extension events (field days and exchanges of experience, quality seed selection techniques, participation in local fairs) and the reward ceremony, with the participation of local, regional and national authorities.",
         },
         {
           name: "Dr. Adam G. Drucker",
@@ -297,6 +303,13 @@ export const messages: Record<Locale, Messages> = {
           bio: "An ecological economist and international RESCA expert, Adam directs the GivingWorks charitable foundation “Farmer AgroEcoServices”, under which this RESCA initiative is carried out. He has been deeply involved in developing and testing RESCA (also known as PACS) for more than 15 years.",
         },
       ],
+    },
+    video: {
+      eyebrow: "In video",
+      title: "See RESCA in action",
+      subtitle:
+        "Watch how conservation agreements turn biodiversity into dignity and living heritage across the Andes.",
+      watch: "Play video",
     },
     donate: {
       badge: "Your gift plants resilience",
@@ -316,6 +329,14 @@ export const messages: Record<Locale, Messages> = {
         post: "(UK Charity No. 1078770), under the Farmer AgroEcoServices charitable fund.",
       },
       tiers: [
+        {
+          title: "Seed keeper",
+          body: "Provides rare seed of an endangered variety to a family for a full planting season.",
+        },
+        {
+          title: "Season guardian",
+          body: "Backs monitoring visits and extension events during the growing season.",
+        },
         {
           title: "Back a producer",
           body: "On average, funds one producer's participation and their community-chosen in-kind reward, presented at a public ceremony.",
@@ -535,8 +556,8 @@ export const messages: Record<Locale, Messages> = {
       members: [
         {
           name: "Kleny Arpazi",
-          role: "Coordinador de trabajo de campo · Perú",
-          bio: "Ciudadano peruano, experto en cultivo de quinua y extensión agrícola, Kleny lleva 15 años trabajando con RESCA y está vinculado al sector agrario del gobierno regional. Se encarga de la implementación en campo: promueve y apoya la participación organizada de los grupos de agricultores en la iniciativa RESCA, la difusión de semillas, visitas frecuentes de verificación, evaluación y seguimiento, así como la organización de eventos de extensión (días de campo o intercambio de experiencias, técnicas de selección de semillas de calidad, participación en ferias locales) y la ceremonia de entrega de recompensas con la participación de autoridades locales, regionales y nacionales.",
+          role: "Coordinadora de trabajo de campo · Perú",
+          bio: "Ciudadana peruana, experta en cultivo de quinua y extensión agrícola, Kleny lleva 15 años trabajando con RESCA y está vinculada al sector agrario del gobierno regional. Se encarga de la implementación en campo: promueve y apoya la participación organizada de los grupos de agricultores en la iniciativa RESCA, la difusión de semillas, visitas frecuentes de verificación, evaluación y seguimiento, así como la organización de eventos de extensión (días de campo o intercambio de experiencias, técnicas de selección de semillas de calidad, participación en ferias locales) y la ceremonia de entrega de recompensas con la participación de autoridades locales, regionales y nacionales.",
         },
         {
           name: "Dr. Adam G. Drucker",
@@ -544,6 +565,13 @@ export const messages: Record<Locale, Messages> = {
           bio: "Economista ecológico y experto internacional en RESCA, dirige la Fundación Benéfica GivingWorks “Farmer AgroEcoServices”, bajo la cual se lleva a cabo esta iniciativa RESCA. Ha estado muy involucrado en el desarrollo y las pruebas de RESCA (también conocido como PACS, en inglés) durante más de 15 años.",
         },
       ],
+    },
+    video: {
+      eyebrow: "En video",
+      title: "Mira RESCA en acción",
+      subtitle:
+        "Descubre cómo los acuerdos de conservación convierten la biodiversidad en dignidad y patrimonio vivo en los Andes.",
+      watch: "Reproducir video",
     },
     donate: {
       badge: "Tu donación siembra resiliencia",
@@ -563,6 +591,14 @@ export const messages: Record<Locale, Messages> = {
         post: "(organización benéfica del Reino Unido N.º 1078770), bajo el fondo benéfico Farmer AgroEcoServices.",
       },
       tiers: [
+        {
+          title: "Guardián de semillas",
+          body: "Entrega semilla rara de una variedad amenazada a una familia por toda una campaña.",
+        },
+        {
+          title: "Guardián de la campaña",
+          body: "Apoya visitas de monitoreo y eventos de extensión durante la temporada de cultivo.",
+        },
         {
           title: "Impulsa a un productor",
           body: "Financia en promedio la participación de un productor y su recompensa elegida en especie, entregada en una ceremonia pública.",

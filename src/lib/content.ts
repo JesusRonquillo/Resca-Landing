@@ -25,6 +25,8 @@ export const testimonials = [
 ] as const;
 
 export const tiers = [
+  { amount: 20 },
+  { amount: 50 },
   { amount: 100 },
   { amount: 200 },
   { amount: 500 },

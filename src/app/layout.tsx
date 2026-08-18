@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import { MotionProvider } from "@/components/motion-provider";
 import { CookieBanner } from "@/components/cookie-banner";
+import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
 
 const inter = Inter({
@@ -160,6 +161,7 @@ export default function RootLayout({
               </a>
               {children}
               <CookieBanner />
+              <Analytics />
             </MotionProvider>
           </LanguageProvider>
         </ThemeProvider>
